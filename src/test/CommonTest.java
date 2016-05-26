@@ -1,13 +1,18 @@
 package test;
 
 import java.math.BigDecimal;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.UUID;
 
 import org.junit.Test;
+
 
 public class CommonTest {
 
@@ -31,20 +36,36 @@ public class CommonTest {
 //		System.out.println(list.contains("4"));
 //		System.out.println(UUID.randomUUID());
 		
-		double d = (double)Math.round(0.835355555*100)/100;
-		System.out.println(d);
+//		double d = (double)Math.round(0.835355555*100)/100;
+//		System.out.println(d);
+//		
+//		Integer it = 1;
+//		System.out.println(it == null);
+//		
+		Calendar calendar = Calendar.getInstance();
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+		//得到本月月初 
+		calendar.set(Calendar.DAY_OF_MONTH,calendar.getActualMinimum(Calendar.DAY_OF_MONTH)); 
+		System.out.println(sdf.format(calendar.getTime()));
+		//得到上个月月初 
+		calendar.set(calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH) - 1, 1);
+		System.out.println(sdf.format(calendar.getTime()));
+		
+		//得到上个月月末 
+		calendar.roll(Calendar.DATE, -1);
+		System.out.println(sdf.format(calendar.getTime()));
 	}
 	
 	@Test
 	public void  testClassNameTest(){
-		Map<String, Object> map =  new HashMap<String, Object>();
-		map.put("taxTotalAmount", 2.36084207E7);
-		map.put("orderTotalQuantity", 281382);
-		map.put("orderAmount",2.36086567E7);
-		
-		System.out.println(new BigDecimal((Double)map.get("taxTotalAmount")).toPlainString());
+//		Map<String, Object> map =  new HashMap<String, Object>();
+//		map.put("taxTotalAmount", 2.36084207E7);
+//		map.put("orderTotalQuantity", 281382);
+//		map.put("orderAmount",2.36086567E7);
+//		
+//		System.out.println(new BigDecimal((Double)map.get("taxTotalAmount")).toPlainString());
 //		classNameTest("123");
-//		Test01.fun();
+		Test01.fun();
 	}
 
 	public void strs(Object... os) {
@@ -69,6 +90,7 @@ class Test01{
 		}
 		try {
 			System.out.println(Class.forName(Thread.currentThread().getStackTrace()[2].getClassName()).getName());
+			System.out.println(Thread.currentThread().getStackTrace()[2].getClassName());
 		} catch (ClassNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
