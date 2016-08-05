@@ -6,8 +6,6 @@ import java.util.List;
 import org.bson.Document;
 
 import com.mongodb.MongoClient;
-import com.mongodb.MongoCredential;
-import com.mongodb.ServerAddress;
 import com.mongodb.client.FindIterable;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoCursor;
@@ -85,4 +83,32 @@ public class MongoDBJDBC {
 	      
 	      System.out.println("操作成功");
 	}
+	
+//	第二种链接方式
+//	public static MongoClient client;
+//	static {
+//		try {
+//			// 从配置文件中获取属性值
+//			String hosts = "10.125.3.11:30000;10.125.3.21:30000;10.125.3.31:30000";
+//			List<ServerAddress> seeds = new ArrayList<ServerAddress>();
+//			String[] addressArr = hosts.split(";");
+//			for(String str : addressArr) {
+//				String[] hostArr = str.split(":");
+//				String ip = hostArr[0];
+//				int port = Integer.valueOf(hostArr[1]);
+//				ServerAddress seed = new ServerAddress(ip, port);
+//				seeds.add(seed);
+//			}
+//			Builder builder = new MongoClientOptions.Builder();
+//			builder.connectionsPerHost(300);
+//			builder.threadsAllowedToBlockForConnectionMultiplier(5000);
+//			builder.maxWaitTime(30000);
+//			builder.connectTimeout(10000);
+//			builder.socketKeepAlive(true);
+//			builder.socketTimeout(3000);// 套接字超时时间，0无限制
+//			builder.writeConcern(WriteConcern.SAFE);
+//			client = new MongoClient(seeds, builder.build());
+//		} catch (Exception e) {
+//		}
+//	}
 }
