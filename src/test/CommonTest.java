@@ -1,17 +1,13 @@
 package test;
 
-import java.math.BigDecimal;
-import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.Date;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
-import java.util.UUID;
 
+import org.apache.commons.lang.StringUtils;
 import org.junit.Test;
+import org.springframework.beans.BeanUtils;
 
 
 public class CommonTest {
@@ -76,6 +72,18 @@ public class CommonTest {
 	
 	public void classNameTest(String str){
 		System.out.println("className:"+this.getClass().getName()+",param:"+str);
+	}
+	
+	@Test
+	public void classCP(){
+		
+		BeanUtils.copyProperties("", "");
+		StringUtils.isNotBlank("");
+		StringUtils.isNotEmpty("");
+		List<String> strs = new ArrayList<String>();
+		for(String str :strs){
+			
+		}
 	}
 }
 class Test01{  
