@@ -85,6 +85,13 @@ public class CommonTest {
 			
 		}
 	}
+	
+	@Test
+	public void hashCode1(){
+		String a = "123";
+		String b = new String("123");
+		System.out.println(a.hashCode() == b.hashCode());
+	}
 }
 class Test01{  
 	static  void fun(){ 
