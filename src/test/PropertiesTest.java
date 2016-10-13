@@ -2,6 +2,7 @@ package test;
 
 import java.io.BufferedInputStream;
 import java.io.FileInputStream;
+import java.util.Arrays;
 import java.util.Properties;
 import java.util.ResourceBundle;
 
@@ -12,7 +13,8 @@ public class PropertiesTest {
 
 //	1
 	private static ResourceBundle rb = ResourceBundle.getBundle("test/a");
-	private static String name = rb.getString("name");
+	private static String name;
+	private static String[] cname;
 	private static Properties p = new Properties();
 	static{
 		try {
@@ -23,16 +25,18 @@ public class PropertiesTest {
 			System.out.println(System.currentTimeMillis() - start+"ms");
 			
 //			3
-			Configuration config = new PropertiesConfiguration(StringUtils.getRealPath() + "/config/config.properties");
+			Configuration config = new PropertiesConfiguration("src/test/a.properties");
 			//mq
-			name = config.getString("name");
+			name = config.getString("name");//只返回第一个逗号前的
+			cname = config.getStringArray("name");//返回一个以逗号为分隔的数组
 		} catch (Exception e) {} 
 	}
 	
 	public static void main(String[] args) {
-		System.out.println(rb.getString("name"));
-		System.out.println(name);
-		System.out.println(p.getProperty("name"));
+		System.out.println("ResourceBundle: "+rb.getString("name"));
+		System.out.println("Configuration: "+name);
+		System.out.println("Configuration: "+Arrays.toString(cname));
+		System.out.println("Properties: "+p.getProperty("name"));
 	}
 
 }
