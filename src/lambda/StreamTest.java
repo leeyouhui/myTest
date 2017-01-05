@@ -23,7 +23,10 @@ public class StreamTest {
 		// 3. Collection的stream方法
 		List<String> list = Arrays.asList(strArray);
 		stream = list.stream();
-
+		
+		// parallelStream变成并行stream，效率提高一半左右
+		long count = list.parallelStream().sorted().count();
+		
 		Iterator<Object> iterator = stream.iterator();
 		while (iterator.hasNext()) {
 			System.out.println(iterator.next());
