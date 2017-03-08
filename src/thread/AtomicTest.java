@@ -4,10 +4,17 @@ import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.atomic.AtomicInteger;
 
 public class AtomicTest {
-	public static AtomicInteger atc = new AtomicInteger(1);
+	public static AtomicInteger atc = new AtomicInteger();
 	public static CountDownLatch cd = new CountDownLatch(1);
+	
 
 	public static void main(String[] args) {
+		for(int i=0;i<10;i++){
+			System.err.println(atc.incrementAndGet());	
+		}
+		atc.set(0);
+		System.err.println(atc.get());
+		
 		Thread thread = new Thread(new Runnable() {
 
 			@Override

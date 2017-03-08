@@ -3,6 +3,7 @@ package math;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Random;
 
 public class Math {
 
@@ -79,6 +80,10 @@ public class Math {
 			System.out.println(s);
 		}
 		System.out.println(step);
+		
+		Random random = new Random();
+		int nextInt = random.nextInt(10) + 1;
+		System.out.println(nextInt);
 	}
 
 }
